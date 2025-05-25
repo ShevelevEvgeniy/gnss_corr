@@ -3,7 +3,7 @@ package log_config
 import (
 	"testing"
 
-	testCases "rooster-gears/internal/config/log_config/test_cases"
+	testCases "gnss_corr/pkg/log_config/test_cases"
 )
 
 func TestStructConfigToMap(t *testing.T) {
