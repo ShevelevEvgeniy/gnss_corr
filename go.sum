@@ -4,6 +4,8 @@ github.com/ShevelevEvgeniy/geodesy_proto v0.0.4 h1:+2sDJuaBP3haHbmZ3ZfRoJO+6JEhp
 github.com/ShevelevEvgeniy/geodesy_proto v0.0.4/go.mod h1:Xj7AeBcH1VFB6Z9rMFnU1vuYeJ0bhcXfBJoEwVbXXVc=
 github.com/ShevelevEvgeniy/geodesy_proto v0.0.5 h1:MOeBx68MrJULCOCTEk5ohnzTvSaNtei4kj1A9aFrvuI=
 github.com/ShevelevEvgeniy/geodesy_proto v0.0.5/go.mod h1:R8jOuu1faVykuH/rjuGV1opIvayvByUHfNDwlZeYpHk=
+github.com/ShevelevEvgeniy/geodesy_proto v0.0.6 h1:QxDYZ8Fl4uo/BViAryPwHfsxo7glWUH+xLJ/d4eIdYU=
+github.com/ShevelevEvgeniy/geodesy_proto v0.0.6/go.mod h1:nEnxU8kGHu45S6Z6qcDx6uMcG7akWQ2+fnZdqr1NP9U=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

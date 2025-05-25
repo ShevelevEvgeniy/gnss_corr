@@ -31,6 +31,5 @@ CREATE TABLE base_stations
     status               base_station_status NOT NULL DEFAULT 'INACTIVE',
     last_calibrated_at   TIMESTAMP,
     installed_at         TIMESTAMP,
-    comment              TEXT,
     updated_at           TIMESTAMP DEFAULT now()
 );
