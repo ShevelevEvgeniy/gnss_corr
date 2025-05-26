@@ -36,7 +36,7 @@ func main() {
 
 	loggingConfig.LogConfig(config)
 
-	postgresStorage, err := postgres.NewPostgresStorage(ctx, logger, config.Postgres())
+	postgresStorage, err := postgres.NewPostgresStorage(ctx, logger, config.Storage.Postgres)
 	if err != nil {
 		logger.Errorw("cannot create task storage", "error", err.Error(), "time", time.Now().UTC().String())
 
@@ -44,7 +44,7 @@ func main() {
 	}
 	defer postgresStorage.Close()
 
-	listen, err := net.Listen(config.Service().Transport, fmt.Sprintf(":%d", config.Service().Port))
+	listen, err := net.Listen(config.Service.Transport, fmt.Sprintf(":%d", config.Service.Port))
 	if err != nil {
 		logger.Error(errors.Wrap(err, "listen port error"))
 

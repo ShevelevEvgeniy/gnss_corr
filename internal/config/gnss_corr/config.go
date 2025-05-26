@@ -8,14 +8,23 @@ import (
 
 type (
 	Config struct {
-		service modules.Service
-		storage storage
+		Service modules.Service
+		Storage storage
 	}
 
 	storage struct {
-		postgres modules.Postgres
+		Postgres modules.Postgres
 	}
 )
+
+func TestLoad(service modules.Service, postgres modules.Postgres) Config {
+	return Config{
+		Service: service,
+		Storage: storage{
+			Postgres: postgres,
+		},
+	}
+}
 
 func Load() (Config, error) {
 	service, err := modules.Load[modules.Service](modules.GlobalEnvPrefix)
@@ -29,8 +38,8 @@ func Load() (Config, error) {
 	}
 
 	return Config{
-		service: service,
-		storage: storageConfig,
+		Service: service,
+		Storage: storageConfig,
 	}, nil
 }
 
@@ -41,6 +50,6 @@ func loadStorage(prefix string) (storage, error) {
 	}
 
 	return storage{
-		postgres: postgres,
+		Postgres: postgres,
 	}, nil
 }
