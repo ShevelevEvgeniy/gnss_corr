@@ -7,7 +7,7 @@ import (
 
 type (
 	CoordinatesCorrectionServer struct {
-		desc.UnimplementedGNSSCorrectionServiceServer
+		desc.UnimplementedCoordinatesCorrectionServiceServer
 		logger          *zap.SugaredLogger
 		postgresStorage PostgresStorage
 	}

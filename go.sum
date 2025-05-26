@@ -1,14 +1,10 @@
-github.com/ShevelevEvgeniy/geodesy_proto v0.0.3 h1:YG9v4QSavvri+NWfbM/S6X/n/geAyykTGIkoOpgeal0=
-github.com/ShevelevEvgeniy/geodesy_proto v0.0.3/go.mod h1:Xj7AeBcH1VFB6Z9rMFnU1vuYeJ0bhcXfBJoEwVbXXVc=
-github.com/ShevelevEvgeniy/geodesy_proto v0.0.4 h1:+2sDJuaBP3haHbmZ3ZfRoJO+6JEhp9VsUY4CIl7VRAU=
-github.com/ShevelevEvgeniy/geodesy_proto v0.0.4/go.mod h1:Xj7AeBcH1VFB6Z9rMFnU1vuYeJ0bhcXfBJoEwVbXXVc=
-github.com/ShevelevEvgeniy/geodesy_proto v0.0.5 h1:MOeBx68MrJULCOCTEk5ohnzTvSaNtei4kj1A9aFrvuI=
-github.com/ShevelevEvgeniy/geodesy_proto v0.0.5/go.mod h1:R8jOuu1faVykuH/rjuGV1opIvayvByUHfNDwlZeYpHk=
 github.com/ShevelevEvgeniy/geodesy_proto v0.0.6 h1:QxDYZ8Fl4uo/BViAryPwHfsxo7glWUH+xLJ/d4eIdYU=
 github.com/ShevelevEvgeniy/geodesy_proto v0.0.6/go.mod h1:nEnxU8kGHu45S6Z6qcDx6uMcG7akWQ2+fnZdqr1NP9U=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
+github.com/envoyproxy/protoc-gen-validate v1.2.1 h1:DEo3O99U8j4hBFwbJfrz9VtgcDfUKS7KJ7spH3d86P8=
+github.com/envoyproxy/protoc-gen-validate v1.2.1/go.mod h1:d/C80l/jxXLdfEIhX1W2TmLfsJ31lvEjwamM4DxlWXU=
 github.com/go-logr/logr v1.4.2 h1:6pFjapn8bFcIbiKo3XT4j/BhANplGihG6tvd+8rYgrY=
 github.com/go-logr/logr v1.4.2/go.mod h1:9T104GzyrTigFIr8wt5mBrctHMim0Nb2HLGrmQ40KvY=
 github.com/go-logr/stdr v1.2.2 h1:hSWxHoqTgW2S2qGc0LTAI563KZ5YKYRhT3MFKZMbjag=

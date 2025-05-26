@@ -17,9 +17,9 @@ func registerServer(logger *zap.SugaredLogger, postgresStorage postgres.Postgres
 	server := grpc.NewServer()
 
 	reflection.Register(server)
-	descRover.RegisterGNSSCorrectionServiceServer(server, rover.NewRoverServer(logger, postgresStorage))
-	descBaseStation.RegisterGNSSCorrectionServiceServer(server, baseStation.NewBaseStationServer(logger, postgresStorage))
-	descCorrCordRover.RegisterGNSSCorrectionServiceServer(server, coord_correction.NewCoordinatesCorrectionServer(logger, postgresStorage))
+	descRover.RegisterRoverServiceServer(server, rover.NewRoverServer(logger, postgresStorage))
+	descBaseStation.RegisterBaseStationServiceServer(server, baseStation.NewBaseStationServer(logger, postgresStorage))
+	descCorrCordRover.RegisterCoordinatesCorrectionServiceServer(server, coord_correction.NewCoordinatesCorrectionServer(logger, postgresStorage))
 
 	return server
 }

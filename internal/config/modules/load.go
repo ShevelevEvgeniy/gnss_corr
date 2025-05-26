@@ -6,7 +6,7 @@ import (
 	"github.com/kelseyhightower/envconfig"
 )
 
-const GlobalEnvPrefix string = "SEARCH_DATA_EXTRACTOR"
+const GlobalEnvPrefix string = "GC"
 
 func Load[T any](prefix string) (T, error) {
 	var config T

@@ -28,7 +28,6 @@ func NewPostgresStorage(ctx context.Context, logger *zap.SugaredLogger, cfg modu
 	return PostgresStorage{
 		logger:             logger,
 		db:                 postgresClient,
-		maxTaskAttempts:    cfg.MaxTaskAttempts,
 		maxRetriesAttempts: cfg.MaxRetriesAttempts,
 	}, nil
 }

@@ -7,7 +7,7 @@ import (
 
 type (
 	BaseStationServer struct {
-		desc.UnimplementedGNSSCorrectionServiceServer
+		desc.UnimplementedBaseStationServiceServer
 		logger          *zap.SugaredLogger
 		postgresStorage PostgresStorage
 	}

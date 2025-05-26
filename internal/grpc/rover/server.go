@@ -1,22 +1,19 @@
 package rover
 
 import (
-	"context"
-
 	desc "github.com/ShevelevEvgeniy/geodesy_proto/gen/proto/api/rover_v1"
-	"gnss_corr/internal/models"
 	"go.uber.org/zap"
 )
 
 type (
 	RoverServer struct {
-		desc.UnimplementedGNSSCorrectionServiceServer
+		desc.UnimplementedRoverServiceServer
 		logger          *zap.SugaredLogger
 		postgresStorage PostgresStorage
 	}
 
 	PostgresStorage interface {
-		RegisterRover(ctx context.Context, rover models.Rover) error
+		//RegisterRover(ctx context.Context, rover models.Rover) error
 	}
 )
 

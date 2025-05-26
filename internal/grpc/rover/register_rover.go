@@ -13,6 +13,5 @@ func (r RoverServer) RegisterRover(ctx context.Context, request *dto.RegisterRov
 		return nil, status.Error(codes.InvalidArgument, err.Error())
 	}
 
-	if err = r.postgresStorage
 	return nil, nil
 }

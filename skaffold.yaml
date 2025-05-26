@@ -1,0 +1,44 @@
+apiVersion: skaffold/v3
+kind: Config
+metadata:
+  name: local
+build:
+  tagPolicy:
+    sha256: { }
+  local:
+    useBuildkit: true
+  artifacts:
+    - image: gc
+      docker:
+        dockerfile: Dockerfile
+    - image: migrator
+      context: migrations
+      sync:
+        auto: true
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  helm:
+    releases:
+      - name: gc
+        namespace: "{{.DEV_NAMESPACE}}"
+        createNamespace: true
+        chartPath: helm/charts/gc
+        valuesFiles:
+          - helm/charts/gc/values.yaml
+        setValueTemplates:
+          image.repository: "{{.IMAGE_REPO_gc}}"
+          image.tag: "{{.IMAGE_TAG_gc}}@{{.IMAGE_DIGEST_gc}}"
+          envSecrets.GC_POSTGRES_USER: "{{.POSTGRES_USER}}"
+          envSecrets.GC_POSTGRES_PASSWORD: "{{.POSTGRES_PASSWORD}}"
+      - name: migrator
+        namespace: "{{.DEV_NAMESPACE}}"
+        createNamespace: true
+        chartPath: migrations/helm/charts
+        valuesFiles:
+          - migrations/helm/charts/values.yaml
+        setValueTemplates:
+          image.repository: "{{.IMAGE_REPO_migrator}}"
+          image.tag: "{{.IMAGE_TAG_migrator}}@{{.IMAGE_DIGEST_migrator}}"
+          envSecrets.MIGRATOR_POSTGRES_PASSWORD: "{{ .POSTGRES_PASSWORD }}"
+          envSecrets.MIGRATOR_POSTGRES_USER: "{{ .POSTGRES_USER }}"

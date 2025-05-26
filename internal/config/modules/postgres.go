@@ -11,7 +11,6 @@ type Postgres struct {
 	Password           string `envconfig:"POSTGRES_PASSWORD"             required:"true"   logKey:"postgres_password,secret"`
 	DBName             string `envconfig:"POSTGRES_DB"                   required:"true"   logKey:"postgres_db"`
 	SSLMode            string `envconfig:"POSTGRES_SSL_MODE"             default:"disable" logKey:"postgres_ssl_mode"`
-	MaxTaskAttempts    uint64 `envconfig:"POSTGRES_MAX_TASK_ATTEMPTS"    default:"5"       logKey:"postgres_max_task_attempts"`
 	MaxRetriesAttempts uint64 `envconfig:"POSTGRES_MAX_RETRIES_ATTEMPTS" default:"5"       logKey:"postgres_max_retries_attempts"`
 }
 
