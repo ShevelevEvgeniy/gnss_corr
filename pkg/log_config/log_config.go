@@ -120,7 +120,8 @@ func logConfigData(configMap map[string]map[string]string) {
 		log.Error("Failed to marshal config data", zap.Error(err))
 	}
 
-	log.Info("application configuration data", zap.String("config", fmt.Sprintf("\n"+string(jsonData)+"\n")))
+	log.Info("application configuration data", zap.String("config", fmt.Sprintf("\n%s\n", string(jsonData))))
+
 }
 
 func isStruct(subCfg reflect.Value) bool {

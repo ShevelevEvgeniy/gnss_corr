@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  ttlSecondsAfterFinished: 100
+  backoffLimit: 5
+  template:
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+          {{- toYaml . | nindent 8 }}
+      {{- end }}
+      restartPolicy: Never
+      containers:
+        - name: {{ .Chart.Name }}-postgres
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag}}
+          imagePullPolicy: {{ .Values.image.pullPolicy}}
+          command: [ "sh" ]
+          args: [ "-c", 'migrate -path /migrations/postgres -database "postgres://${MIGRATOR_POSTGRES_USER}:${MIGRATOR_POSTGRES_PASSWORD}@${MIGRATOR_POSTGRES_HOST}:${MIGRATOR_POSTGRES_PORT}/${MIGRATOR_POSTGRES_DB}?sslmode=disable" up' ]
+          envFrom:
+            - configMapRef:
+                name: {{ .Release.Name }}-configmap
+            - secretRef:
+                name: {{ .Release.Name }}-secret

@@ -1,0 +1,17 @@
+replicaCount: 1
+imagePullSecrets:
+  - name: yourSecret
+image:
+  pullPolicy: IfNotPresent
+ingress_enabled: false
+envConfigs:
+  GC_SERVER_TRANSPORT: 'tcp'
+  GC_SERVER_PORT: '50051'
+  GC_POSTGRES_HOST: "postgres-postgresql"
+  GC_POSTGRES_PORT: "5432"
+  GC_POSTGRES_DB: "gnss_corr"
+  GC_POSTGRES_SSL_MODE: "disable"
+  GC_POSTGRES_MAX_RETRIES_ATTEMPTS: "5"
+envSecrets:
+  GC_POSTGRES_PASSWORD: ~
+  GC_POSTGRES_USER: ~

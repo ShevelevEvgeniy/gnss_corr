@@ -1,0 +1,12 @@
+replicaCount: 1
+image:
+  pullPolicy: IfNotPresent
+envConfigs:
+  MIGRATOR_POSTGRES_HOST: 'postgres-postgresql'
+  MIGRATOR_POSTGRES_PORT: '5432'
+  MIGRATOR_POSTGRES_DB: 'gnss_corr'
+envSecrets:
+  MIGRATOR_POSTGRES_PASSWORD: ~
+  MIGRATOR_POSTGRES_USER: ~
+
+

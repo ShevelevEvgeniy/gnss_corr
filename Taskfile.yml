@@ -1,0 +1,52 @@
+version: "3"
+vars:
+  KEY: "{{ now | unixEpoch | b64enc }}"
+  NAMESPACE: "{{ .DEV_NAMESPACE }}"
+dotenv: [ 'skaffold.env' ]
+tasks:
+  minikube:start:
+    desc: Start minikube
+    cmds:
+      - minikube start --memory=4096 --cpus=2
+      - minikube addons enable ingress
+  minikube:delete:
+    desc: Delete minikube
+    cmds:
+      - minikube delete
+  helm:init:
+    desc: Add repos
+    cmds:
+      - task: k8s:namespace:create
+      - helm repo add bitnami https://raw.githubusercontent.com/bitnami/charts/archive-full-index/bitnami
+      - helm repo update
+  helm:install:
+    desc: Install Helm releases
+    cmds:
+      - helm upgrade --install postgres bitnami/postgresql --namespace {{ .NAMESPACE }} --set auth.password={{ .POSTGRES_PASSWORD }} --set auth.username={{ .POSTGRES_USER }} --set auth.postgresPassword={{ .POSTGRES_POSTGRES_PASSWORD }} --set auth.database=gnss_corr --reuse-values --wait
+      - echo "Waiting for PostgreSQL pod..." && sleep 15
+      - kubectl run postgres-client --rm -i --tty --restart=Never --namespace gc --image=postgres:16 --env="PGPASSWORD=postgres" --command -- psql -h postgres-postgresql.gc.svc.cluster.local -U postgres -d gnss_corr -c "CREATE EXTENSION IF NOT EXISTS postgis;"
+  k8s:namespace:create:
+    desc: Create namespace
+    cmds:
+      - cmd: kubectl create namespace {{ .NAMESPACE }}
+        ignore_error: true
+  init:
+    desc: Drop & Restart minikube cluster
+    cmds:
+      - task: helm:init
+      - task: helm:install
+  run:
+    desc: skaffold run
+    cmds:
+      - export DEV_NAMESPACE=$DEV_NAMESPACE; skaffold run
+  dev:
+    desc: skaffold dev
+    cmds:
+      - export DEV_NAMESPACE=$DEV_NAMESPACE; skaffold dev
+  deploy:
+    desc: install and run app
+    cmds:
+      - task: minikube:delete
+      - task: minikube:start
+      - task: init
+      - task: run

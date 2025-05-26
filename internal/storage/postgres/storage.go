@@ -10,25 +10,24 @@ import (
 	"go.uber.org/zap"
 )
 
-type TaskStorage struct {
+type PostgresStorage struct {
 	logger             *zap.SugaredLogger
 	db                 *pgxpool.Pool
 	maxTaskAttempts    uint64
 	maxRetriesAttempts uint64
 }
 
-func NewTaskStorage(ctx context.Context, logger *zap.SugaredLogger, cfg modules.Postgres) (TaskStorage, error) {
+func NewPostgresStorage(ctx context.Context, logger *zap.SugaredLogger, cfg modules.Postgres) (PostgresStorage, error) {
 	postgresClient, err := NewPostgresClient(ctx, cfg)
 	if err != nil {
 		logger.Errorw("cannot create postgres clients", "error", err.Error(), "time", time.Now().UTC().String())
 
-		return TaskStorage{}, errors.Wrap(err, "cannot create postgres clients")
+		return PostgresStorage{}, errors.Wrap(err, "cannot create postgres clients")
 	}
 
-	return TaskStorage{
+	return PostgresStorage{
 		logger:             logger,
 		db:                 postgresClient,
-		maxTaskAttempts:    cfg.MaxTaskAttempts,
 		maxRetriesAttempts: cfg.MaxRetriesAttempts,
 	}, nil
 }
@@ -46,6 +45,6 @@ func NewPostgresClient(ctx context.Context, config modules.Postgres) (*pgxpool.P
 	return dbPool, nil
 }
 
-func (t TaskStorage) Close() {
+func (t PostgresStorage) Close() {
 	t.db.Close()
 }
